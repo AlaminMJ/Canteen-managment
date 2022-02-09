@@ -2,63 +2,59 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import "./ProductList.css";
 const ProductList = () => {
-  // const [products, setProducts] = useState([]);
-
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((data) => {
-        console.log(data);
+      .get("http://localhost:5000/api/productlists")
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.message));
+
+    console.log(products);
   }, []);
 
   return (
     <div className="container px-4">
       <h1 className="display-4 text-primary text-center">product List</h1>
       <div>
-        <Button className="d-flex align-items-center ms-auto">
-          <AiOutlinePlus className="me-2" size={20} /> Add Product
-        </Button>
+        <Link to="/addproduct">
+          <Button className="d-flex align-items-center ms-auto">
+            <AiOutlinePlus className="me-2" size={20} /> Add Product
+          </Button>
+        </Link>
       </div>
 
       <div className="product-list-container mt-4">
-        <Card>
-          <Card.Img
-            variant="top"
-            className="product-list-img"
-            src="https://thefinancialexpress.com.bd/uploads/1630856711.jpeg"
-          />
-          <Card.Body>
-            <Card.Title>Rice Minicate</Card.Title>
-            <Card.Text></Card.Text>
-            <Button variant="primary" size="sm">
-              Edit
-            </Button>
-            <Button variant="danger" size="sm" className="ms-2">
-              Delete
-            </Button>
-          </Card.Body>
-        </Card>
-        <Card>
-          <Card.Img
-            variant="top"
-            className="product-list-img"
-            src="https://is2.ecplaza.com/ecplaza2/products/3/35/356/1419434306/4206120.jpg"
-          />
-          <Card.Body>
-            <Card.Title>Soyabin Oil</Card.Title>
-            <Card.Text></Card.Text>
-            <Button variant="primary" size="sm">
-              Edit
-            </Button>
-            <Button variant="danger" className="ms-2" size="sm">
-              Delete
-            </Button>
-          </Card.Body>
-        </Card>
+        {products.map((product) => {
+          return (
+            <Card key={product._id}>
+              <Card.Img
+                variant="top"
+                className="product-list-img"
+                src={product.imgurl}
+              />
+              <Card.Body>
+                <Card.Title>{product.productName}</Card.Title>
+                <div className="d-flex justify-content-between">
+                  <p>{product.productCode}</p>
+                  <p>{product.unit}</p>
+                </div>
+                <Card.Text></Card.Text>
+                <Button variant="primary" size="sm">
+                  Edit
+                </Button>
+                <Button variant="danger" size="sm" className="ms-2">
+                  Delete
+                </Button>
+              </Card.Body>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

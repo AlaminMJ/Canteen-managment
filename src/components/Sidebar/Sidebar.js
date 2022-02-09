@@ -25,6 +25,7 @@ const Sidebar = () => {
   const [showBill, setShowBill] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showUser, setShowUser] = useState(false);
+  const [showShoe, setShowShoe] = useState(false);
   const showSubmenu = (field) => {
     if (field === "sell") {
       setShowSell(!showSell);
@@ -40,6 +41,8 @@ const Sidebar = () => {
       setShowMenu(!showMenu);
     } else if (field === "user") {
       setShowUser(!showUser);
+    } else if (field === "shoe") {
+      setShowShoe(!showShoe);
     }
   };
   return (
@@ -233,6 +236,28 @@ const Sidebar = () => {
                 </Link>
                 <Link to="/" className="collapse__sublink">
                   User List
+                </Link>
+              </div>
+            </div>
+            <div className="nav_link collaps">
+              <AiOutlineUser className="nav_icon" />
+              <span>Shoe</span>
+              <MdOutlineKeyboardArrowDown
+                className="collapse__link"
+                onClick={() => {
+                  showSubmenu("shoe");
+                }}
+              />
+              <div
+                className={
+                  showShoe ? "collapse__menu active" : "collapse__menu"
+                }
+              >
+                <Link to="/shoe" className="collapse__sublink">
+                  Show
+                </Link>
+                <Link to="/shoelist" className="collapse__sublink">
+                  shoe List
                 </Link>
               </div>
             </div>

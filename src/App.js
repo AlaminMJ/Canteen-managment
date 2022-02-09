@@ -2,8 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
 import "./App.css";
 
-import AddProduct from "./pages/AddProduct/AddProduct";
-import ProductList from "./pages/ProductList/ProductList";
 import Purchase from "./pages/Purchase/Purchase";
 import Sell from "./pages/Sell/Sell";
 import SellList from "./pages/Sell/SellList";
@@ -13,6 +11,10 @@ import LogIn from "./pages/LogIn/LogIn";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Bill from "./pages/Bill/Bill";
 import BillList from "./pages/Bill/BillList";
+import ProductList from "./pages/ProductList/ProductList";
+import AddProduct from "./pages/ProductList/AddProduct";
+import Shoe from "./pages/Shoe/Shoe";
+import ShoeList from "./pages/Shoe/ShoeList";
 function App() {
   return (
     <div className="App">
@@ -31,6 +33,8 @@ function App() {
             <Route path="selllist" element={<SellList />} />
             <Route path="bill" element={<Bill />} />
             <Route path="billlist" element={<BillList />} />
+            <Route path="shoe" element={<Shoe />} />
+            <Route path="shoelist" element={<ShoeList />} />
           </Route>
         </Routes>
       </BrowserRouter>
