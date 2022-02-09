@@ -37,7 +37,11 @@ const AddProduct = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit" className="d-flex px-5">
+        <Button
+          variant="primary"
+          type="submit"
+          className="d-flex align-items-center"
+        >
           Submit <IoMdPaperPlane size={22} className="ms-2" />
         </Button>
       </Form>

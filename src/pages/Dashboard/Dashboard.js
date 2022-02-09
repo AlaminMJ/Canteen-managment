@@ -1,4 +1,6 @@
 import React from "react";
+import { BsCalendar4, BsChatLeft, BsClipboard } from "react-icons/bs";
+import { MdOutlineForwardToInbox } from "react-icons/md";
 import { LineChart, XAxis, Tooltip, Line, CartesianGrid } from "recharts";
 import "./Dashboard.css";
 
@@ -42,11 +44,35 @@ const Dashboard = () => {
   ];
   return (
     <div className="container dashboard px-5">
-      <div className="box">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>3</div>
+      <div className="boxs">
+        <div className="box">
+          <div>
+            <p className="text-primary m-0 fs-4 fw-light">Receive</p>
+            <p className="fs-4  fw-light m-0">1020</p>
+          </div>
+          <BsCalendar4 className="icon" />
+        </div>
+        <div className="box">
+          <div>
+            <p className="text-primary m-0 fs-4 fw-light">Issu</p>
+            <p className="fs-4  fw-light m-0">8020</p>
+          </div>
+          <BsChatLeft className="icon" />
+        </div>
+        <div className="box">
+          <div>
+            <p className="text-primary m-0 fs-4 fw-light">Balance</p>
+            <p className="fs-4 fw-light m-0">120</p>
+          </div>
+          <MdOutlineForwardToInbox className="icon" />
+        </div>
+        <div className="box">
+          <div>
+            <p className="text-primary m-0 fs-4 fw-light">Return</p>
+            <p className="fs-4  fw-light m-0">$120</p>
+          </div>
+          <BsClipboard className="icon" />
+        </div>
       </div>
       <div className="chart">
         <h2 className="display-6 text-primary">Stock</h2>
@@ -67,6 +93,8 @@ const Dashboard = () => {
           </LineChart>
         </div>
       </div>
+      {/* menu */}
+     
     </div>
   );
 };

@@ -2,9 +2,12 @@ import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IoMdPaperPlane } from "react-icons/io";
 const Purchase = () => {
+  const curr = new Date();
+  curr.setDate(curr.getDate());
+  const today = curr.toISOString().substr(0, 10);
   return (
     <div className="container">
-      <h1 className="display-4 text-primary text-center">Purchase</h1>
+      <h1 className="display-4 text-primary text-center">Purchase Products</h1>
       <Form className=" w-75 mx-auto mt-5">
         <Row className="mb-3">
           <Form.Group as={Col} className="col-8" controlId="formGridState">
@@ -17,7 +20,7 @@ const Purchase = () => {
           </Form.Group>
           <Form.Group as={Col} className="col-4" controlId="formGridState">
             <Form.Label>Date</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control type="date" defaultValue={today} />
           </Form.Group>
         </Row>
 
@@ -40,7 +43,11 @@ const Purchase = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit" className="d-flex px-5">
+        <Button
+          variant="primary"
+          type="submit"
+          className="d-flex align-items-center"
+        >
           Submit <IoMdPaperPlane size={22} className="ms-2" />
         </Button>
       </Form>

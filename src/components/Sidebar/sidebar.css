@@ -20,6 +20,8 @@
   overflow: hidden;
   overflow-y: auto;
   user-select: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .side_nav::-webkit-scrollbar {
   width: 0px;
@@ -57,11 +59,11 @@
 }
 .collapse__link {
   justify-self: self-end;
-
   transition: 0.5s;
   width: 30px;
   height: 30px;
   border-radius: 5px;
+  font-size: 10px;
   /* border: 1px solid rgba(255, 255, 225, 0.1); */
   transition: 0.5s;
 }

@@ -4,6 +4,9 @@ import DeleteModal from "../../components/Modal/DeleteModal";
 
 const PurchaseList = () => {
   const [modalShow, setModalShow] = useState(false);
+  const curr = new Date();
+  curr.setDate(curr.getDate());
+  const today = curr.toISOString().substr(0, 10);
   return (
     <div className="container">
       <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -11,7 +14,7 @@ const PurchaseList = () => {
       <div>
         <Form.Group className="col-3 ms-auto mb-3" controlId="formGridPassword">
           <Form.Label>Date</Form.Label>
-          <Form.Control type="date" />
+          <Form.Control type="date" defaultValue={today} />
         </Form.Group>
       </div>
       <div>

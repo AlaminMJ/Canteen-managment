@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
-import { BiHomeAlt } from "react-icons/bi";
+import { BiHomeAlt, BiFoodMenu } from "react-icons/bi";
 // import { BsFolder } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import {
   MdOutlineKeyboardArrowDown,
   MdOutlineLocalPrintshop,
 } from "react-icons/md";
-import { IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline, IoBookOutline } from "react-icons/io5";
 import {
   AiOutlinePieChart,
   AiOutlineShoppingCart,
   AiOutlineShopping,
   AiOutlineLineChart,
+  AiOutlineUser,
 } from "react-icons/ai";
 
 const Sidebar = () => {
@@ -21,6 +22,9 @@ const Sidebar = () => {
   const [showSell, setShowSell] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
   const [showReport, setShowReport] = useState(false);
+  const [showBill, setShowBill] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showUser, setShowUser] = useState(false);
   const showSubmenu = (field) => {
     if (field === "sell") {
       setShowSell(!showSell);
@@ -30,6 +34,12 @@ const Sidebar = () => {
       setShowReport(!showReport);
     } else if (field === "product") {
       setShowProduct(!showProduct);
+    } else if (field === "bill") {
+      setShowBill(!showBill);
+    } else if (field === "menu") {
+      setShowMenu(!showMenu);
+    } else if (field === "user") {
+      setShowUser(!showUser);
     }
   };
   return (
@@ -47,7 +57,7 @@ const Sidebar = () => {
             </Link>
 
             <div className="nav_link collaps ">
-              <AiOutlineShoppingCart className="nav_icon" />
+              <IoBookOutline className="nav_icon" />
               <span>Products</span>
               <MdOutlineKeyboardArrowDown
                 className="collapse__link "
@@ -96,15 +106,13 @@ const Sidebar = () => {
                 <Link to="/" className="collapse__sublink">
                   Return List
                 </Link>
-                <Link to="/" className="collapse__sublink">
-                  sub menu
-                </Link>
               </div>
             </div>
             <div className="nav_link collaps">
               <AiOutlineShopping className="nav_icon" />
               <span>Sell</span>
               <MdOutlineKeyboardArrowDown
+                size={11}
                 className="collapse__link"
                 onClick={() => {
                   showSubmenu("sell");
@@ -127,15 +135,60 @@ const Sidebar = () => {
                 <Link to="/" className="collapse__sublink">
                   Return List
                 </Link>
-                <Link to="/" className="collapse__sublink">
-                  sub menu
+              </div>
+            </div>
+            <div className="nav_link collaps">
+              <BiFoodMenu className="nav_icon" />
+              <span>Food Menu</span>
+              <MdOutlineKeyboardArrowDown
+                size={11}
+                className="collapse__link"
+                onClick={() => {
+                  showSubmenu("menu");
+                }}
+              />
+              <div
+                className={
+                  showMenu ? "collapse__menu active" : "collapse__menu"
+                }
+              >
+                <Link to="/bill" className="collapse__sublink">
+                  Add Menu
+                </Link>
+                <Link to="/billlist" className="collapse__sublink">
+                  Breakfast Menu
+                </Link>
+                <Link to="/billlist" className="collapse__sublink">
+                  O.T Menu
+                </Link>
+                <Link to="/billlist" className="collapse__sublink">
+                  Launch Menu
                 </Link>
               </div>
             </div>
-            <Link to="/" className="nav_link">
+            <div className="nav_link collaps">
               <AiOutlinePieChart className="nav_icon" />
               <span>Bill</span>
-            </Link>
+              <MdOutlineKeyboardArrowDown
+                size={11}
+                className="collapse__link"
+                onClick={() => {
+                  showSubmenu("bill");
+                }}
+              />
+              <div
+                className={
+                  showBill ? "collapse__menu active" : "collapse__menu"
+                }
+              >
+                <Link to="/bill" className="collapse__sublink">
+                  Bill
+                </Link>
+                <Link to="/billlist" className="collapse__sublink">
+                  Bill List
+                </Link>
+              </div>
+            </div>
             <div className="nav_link collaps">
               <MdOutlineLocalPrintshop className="nav_icon" />
               <span>Reports</span>
@@ -158,6 +211,28 @@ const Sidebar = () => {
                 </Link>
                 <Link to="/" className="collapse__sublink">
                   Snack for O.T
+                </Link>
+              </div>
+            </div>
+            <div className="nav_link collaps">
+              <AiOutlineUser className="nav_icon" />
+              <span>Users</span>
+              <MdOutlineKeyboardArrowDown
+                className="collapse__link"
+                onClick={() => {
+                  showSubmenu("user");
+                }}
+              />
+              <div
+                className={
+                  showUser ? "collapse__menu active" : "collapse__menu"
+                }
+              >
+                <Link to="/" className="collapse__sublink">
+                  Add user
+                </Link>
+                <Link to="/" className="collapse__sublink">
+                  User List
                 </Link>
               </div>
             </div>

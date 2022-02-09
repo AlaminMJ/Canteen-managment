@@ -29,15 +29,10 @@ const Topbar = () => {
             <Nav className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link href="#action1">Home</Nav.Link>
               <Nav.Link href="#action2">About</Nav.Link>
-              <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
+              <NavDropdown title="Menu" id="offcanvasNavbarDropdown">
                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
+                <NavDropdown.Item href="#action4">item</NavDropdown.Item>
+                <NavDropdown.Item href="#action5">item</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
@@ -47,7 +42,7 @@ const Topbar = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-success">Send</Button>
             </Form>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

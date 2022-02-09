@@ -14,7 +14,8 @@ const SellList = () => {
             controlId="formGridPassword"
           >
             <Form.Label>Date</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control type="date" defaultValue={new Date().toJSON().slice(0,10)
+ } />
           </Form.Group>
         </div>
         <div>
