@@ -4,6 +4,7 @@ import { IoMdPaperPlane } from "react-icons/io";
 import "./AddProduct.css";
 
 const AddProduct = () => {
+  
   return (
     <div>
       <h1 className="display-4 text-primary text-center">Add Product</h1>
