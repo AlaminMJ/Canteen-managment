@@ -1,25 +1,30 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { IoMdPaperPlane } from "react-icons/io";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const Shoe = () => {
-  const curr = new Date();
+const UpdateShoe = () => {
+  const [shoe, setShoe] = useState({});
+  const { id } = useParams;
+  const loadData = async () => {
+    const result = await axios(`http://localhost:5000/api/shoes/${id}`);
+    setShoe(result.data);
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+  const curr = new Date(shoe.date);
   curr.setDate(curr.getDate());
   const today = curr.toISOString().substr(0, 10);
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log();
-    axios
-      .post("http://localhost:5000/api/shoes", data)
-      .then((res) => {
-        alert("Sucessfull Added");
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
+
+  const onSubmit = async (data) => {
+    const result = await axios.put("http://localhost:5000/api/shoes", data);
+    console.log(result.data);
   };
   return (
     <div>
@@ -48,6 +53,7 @@ const Shoe = () => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="texty"
+              defaultValue={shoe.name}
               placeholder="Name"
               {...register("name", { required: true })}
             />
@@ -57,6 +63,7 @@ const Shoe = () => {
             <Form.Control
               type="number"
               placeholder="id"
+              defaultValue={shoe.id}
               {...register("id", { required: true })}
             />
           </Form.Group>
@@ -74,4 +81,4 @@ const Shoe = () => {
   );
 };
 
-export default Shoe;
+export default UpdateShoe;

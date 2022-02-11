@@ -254,7 +254,7 @@ const Sidebar = () => {
                 }
               >
                 <Link to="/shoe" className="collapse__sublink">
-                  Show
+                  Shoe
                 </Link>
                 <Link to="/shoelist" className="collapse__sublink">
                   shoe List

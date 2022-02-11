@@ -15,6 +15,7 @@ import ProductList from "./pages/ProductList/ProductList";
 import AddProduct from "./pages/ProductList/AddProduct";
 import Shoe from "./pages/Shoe/Shoe";
 import ShoeList from "./pages/Shoe/ShoeList";
+import UpdateShoe from "./pages/Shoe/UpdateShoe";
 function App() {
   return (
     <div className="App">
@@ -35,6 +36,7 @@ function App() {
             <Route path="billlist" element={<BillList />} />
             <Route path="shoe" element={<Shoe />} />
             <Route path="shoelist" element={<ShoeList />} />
+            <Route path="updateshoe/:id" element={<UpdateShoe />} />
           </Route>
         </Routes>
       </BrowserRouter>
