@@ -17,7 +17,7 @@ const UpdateShoe = () => {
   useEffect(() => {
     loadData();
   }, []);
-  const curr = new Date(shoe.date);
+  const curr = new Date();
   curr.setDate(curr.getDate());
   const today = curr.toISOString().substr(0, 10);
   const { register, handleSubmit } = useForm();
@@ -26,9 +26,10 @@ const UpdateShoe = () => {
     const result = await axios.put("http://localhost:5000/api/shoes", data);
     console.log(result.data);
   };
+
   return (
     <div>
-      <h1 className="display-4 text-primary text-center">Shoe</h1>
+      <h1 className="display-4 text-primary text-center"> Update Shoe</h1>
       {/* form */}
       <div className="d-flex justify-content-between m-4">
         <div></div>
