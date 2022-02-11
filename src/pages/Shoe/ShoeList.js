@@ -70,7 +70,7 @@ const ShoeList = () => {
             },
           ]}
           data={shoes}
-          title="Demo Title"
+          title="Shoe recive"
         />
       </div>
     </div>
