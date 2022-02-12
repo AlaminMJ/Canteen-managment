@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IoMdPaperPlane } from "react-icons/io";
 const Purchase = () => {
@@ -8,6 +9,13 @@ const Purchase = () => {
   return (
     <div className="container">
       <h1 className="display-4 text-primary text-center">Purchase Products</h1>
+      <div>
+        <Link to="/purchaselist" className="mb-4">
+          <Button className="d-flex align-items-center ms-auto">
+            Purchase List
+          </Button>
+        </Link>
+      </div>
       <Form className=" w-75 mx-auto mt-5">
         <Row className="mb-3">
           <Form.Group as={Col} className="col-8" controlId="formGridState">

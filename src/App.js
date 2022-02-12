@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
 import "./App.css";
-import AuthContext from "./components/Context/AuthContext";
+// import AuthContext from "./components/Context/AuthContext";
 import Purchase from "./pages/Purchase/Purchase";
 import Sell from "./pages/Sell/Sell";
 import SellList from "./pages/Sell/SellList";
@@ -23,32 +23,30 @@ import UpdateUser from "./pages/User/UpdateUser";
 function App() {
   return (
     <div className="App">
-      <AuthContext>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<LogIn />} />
-            <Route path="/*" element={<PrivateRoute />}>
-              <Route path="*" element={<Dashboard />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="home" element={<Home />} />
-              <Route path="addproduct" element={<AddProduct />} />
-              <Route path="productlist" element={<ProductList />} />
-              <Route path="purchase" element={<Purchase />} />
-              <Route path="purchaselist" element={<PurchaseList />} />
-              <Route path="sell" element={<Sell />} />
-              <Route path="selllist" element={<SellList />} />
-              <Route path="bill" element={<Bill />} />
-              <Route path="billlist" element={<BillList />} />
-              <Route path="shoe" element={<Shoe />} />
-              <Route path="shoelist" element={<ShoeList />} />
-              <Route path="updateshoe/:id" element={<UpdateShoe />} />
-              <Route path="adduser" element={<AddUser />} />
-              <Route path="userlist" element={<UserList />} />
-              <Route path="updateuser/:id" element={<UpdateUser />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthContext>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/*" element={<PrivateRoute />}>
+            <Route path="*" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="home" element={<Home />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="productlist" element={<ProductList />} />
+            <Route path="purchase" element={<Purchase />} />
+            <Route path="purchaselist" element={<PurchaseList />} />
+            <Route path="sell" element={<Sell />} />
+            <Route path="selllist" element={<SellList />} />
+            <Route path="bill" element={<Bill />} />
+            <Route path="billlist" element={<BillList />} />
+            <Route path="shoe" element={<Shoe />} />
+            <Route path="shoelist" element={<ShoeList />} />
+            <Route path="updateshoe/:id" element={<UpdateShoe />} />
+            <Route path="adduser" element={<AddUser />} />
+            <Route path="userlist" element={<UserList />} />
+            <Route path="updateuser/:id" element={<UpdateUser />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
