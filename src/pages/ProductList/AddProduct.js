@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import axios from "../../"
 import { useForm } from "react-hook-form";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IoMdPaperPlane } from "react-icons/io";
