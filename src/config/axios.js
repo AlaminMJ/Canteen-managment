@@ -1,8 +1,8 @@
 import axios from "axios";
-const accessToken = localStorage.getItem("accessToken");
-const instant = axios.create({
+const authToken = localStorage.getItem("accessToken");
+const instance = axios.create({
   baseurl: "http://localhost:5000/api/",
-  headers: { " authoraization": accessToken }
+  headers: { Authorization: authToken }
 });
 
-export default instant;
+export default instance;

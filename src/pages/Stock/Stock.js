@@ -7,17 +7,13 @@ const Stock = () => {
       <MaterialTable
         className="m-4"
         columns={[
-          { title: "Adı", field: "name" },
-          { title: "Soyadı", field: "surname" },
-          { title: "Doğum Yılı", field: "birthYear", type: "numeric" },
-          {
-            title: "Doğum Yeri",
-            field: "birthCity",
-            lookup: { 34: "İstanbul", 63: "Şanlıurfa" }
-          }
+          { title: "Code", field: "code" },
+          { title: "Product Name", field: "productName" },
+          { title: "Balance", field: "balance", type: "numeric" },
+          { title: "Amount", field: "total", type: "numeric" }
         ]}
         data={[
-          { name: "Mehmet", surname: "Baran", birthYear: 1987, birthCity: 63 }
+          { code: "200", productName: "rice", balance: 500, total: 250000 }
         ]}
         title="Stock"
         options={{
