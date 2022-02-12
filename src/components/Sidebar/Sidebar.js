@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import { BiHomeAlt, BiFoodMenu } from "react-icons/bi";
-// import { BsFolder } from "react-icons/bs";
+import { BsFolder } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import {
   MdOutlineKeyboardArrowDown,
@@ -54,7 +54,7 @@ const Sidebar = () => {
               <BiHomeAlt className="nav_icon" />
               <span>Dashboard</span>
             </Link>
-            <Link to="/" className="nav_link">
+            <Link to="/stock" className="nav_link">
               <AiOutlineLineChart className="nav_icon" />
               <span>Stock</span>
             </Link>

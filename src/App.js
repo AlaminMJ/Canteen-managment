@@ -19,6 +19,7 @@ import UpdateShoe from "./pages/Shoe/UpdateShoe";
 import AddUser from "./pages/User/AddUser";
 import UserList from "./pages/User/UserList";
 import UpdateUser from "./pages/User/UpdateUser";
+import Stock from "./pages/Stock/Stock";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="adduser" element={<AddUser />} />
             <Route path="userlist" element={<UserList />} />
             <Route path="updateuser/:id" element={<UpdateUser />} />
+            <Route path="stock" element={<Stock />} />
           </Route>
         </Routes>
       </BrowserRouter>
