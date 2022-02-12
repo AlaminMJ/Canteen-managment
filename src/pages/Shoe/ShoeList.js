@@ -56,21 +56,24 @@ const ShoeList = () => {
               render: (rowData) => (
                 <>
                   <Link to={`/updateshoe/${rowData._id}`}>
-                    <button className="btn btn-primary">Edit</button>
+                    <button className="btn btn-sm btn-primary">Edit</button>
                   </Link>
 
                   <button
-                    className="btn btn-danger ms-2"
+                    className="btn btn-sm btn-danger ms-2"
                     onClick={() => deleteShoe(rowData._id)}
                   >
                     Delete
                   </button>
                 </>
-              ),
-            },
+              )
+            }
           ]}
           data={shoes}
           title="Shoe recive"
+          options={{
+            exportButton: true
+          }}
         />
       </div>
     </div>
