@@ -6,7 +6,7 @@ import { BiHomeAlt, BiFoodMenu } from "react-icons/bi";
 import { FiLogOut } from "react-icons/fi";
 import {
   MdOutlineKeyboardArrowDown,
-  MdOutlineLocalPrintshop,
+  MdOutlineLocalPrintshop
 } from "react-icons/md";
 import { IoSettingsOutline, IoBookOutline } from "react-icons/io5";
 import {
@@ -14,7 +14,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineShopping,
   AiOutlineLineChart,
-  AiOutlineUser,
+  AiOutlineUser
 } from "react-icons/ai";
 
 const Sidebar = () => {
@@ -54,7 +54,7 @@ const Sidebar = () => {
               <BiHomeAlt className="nav_icon" />
               <span>Dashboard</span>
             </Link>
-            <Link to="/" className="nav_link">
+            <Link to="/stock" className="nav_link">
               <AiOutlineLineChart className="nav_icon" />
               <span>Stock</span>
             </Link>
@@ -155,10 +155,10 @@ const Sidebar = () => {
                   showMenu ? "collapse__menu active" : "collapse__menu"
                 }
               >
-                <Link to="/bill" className="collapse__sublink">
+                <Link to="/addmenu" className="collapse__sublink">
                   Add Menu
                 </Link>
-                <Link to="/billlist" className="collapse__sublink">
+                <Link to="/break" className="collapse__sublink">
                   Breakfast Menu
                 </Link>
                 <Link to="/billlist" className="collapse__sublink">
@@ -231,10 +231,10 @@ const Sidebar = () => {
                   showUser ? "collapse__menu active" : "collapse__menu"
                 }
               >
-                <Link to="/" className="collapse__sublink">
+                <Link to="/adduser" className="collapse__sublink">
                   Add user
                 </Link>
-                <Link to="/" className="collapse__sublink">
+                <Link to="/userlist" className="collapse__sublink">
                   User List
                 </Link>
               </div>

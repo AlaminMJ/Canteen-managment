@@ -21,15 +21,14 @@ const ShoeList = () => {
     loadDate();
   }, []);
   const deleteShoe = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/shoes/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/shoes/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
   return (
@@ -56,21 +55,24 @@ const ShoeList = () => {
               render: (rowData) => (
                 <>
                   <Link to={`/updateshoe/${rowData._id}`}>
-                    <button className="btn btn-primary">Edit</button>
+                    <button className="btn btn-sm btn-primary">Edit</button>
                   </Link>
 
                   <button
-                    className="btn btn-danger ms-2"
+                    className="btn btn-sm btn-danger ms-2"
                     onClick={() => deleteShoe(rowData._id)}
                   >
                     Delete
                   </button>
                 </>
-              ),
-            },
+              )
+            }
           ]}
           data={shoes}
           title="Shoe recive"
+          options={{
+            exportButton: true
+          }}
         />
       </div>
     </div>

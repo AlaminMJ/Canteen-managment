@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./containers/Home";
 import "./App.css";
-
+// import AuthContext from "./components/Context/AuthContext";
 import Purchase from "./pages/Purchase/Purchase";
 import Sell from "./pages/Sell/Sell";
 import SellList from "./pages/Sell/SellList";
@@ -16,6 +16,11 @@ import AddProduct from "./pages/ProductList/AddProduct";
 import Shoe from "./pages/Shoe/Shoe";
 import ShoeList from "./pages/Shoe/ShoeList";
 import UpdateShoe from "./pages/Shoe/UpdateShoe";
+import AddUser from "./pages/User/AddUser";
+import UserList from "./pages/User/UserList";
+import UpdateUser from "./pages/User/UpdateUser";
+import Stock from "./pages/Stock/Stock";
+import UpdateProductList from "./pages/ProductList/UpdateProductList";
 
 function App() {
   return (
@@ -38,6 +43,14 @@ function App() {
             <Route path="shoe" element={<Shoe />} />
             <Route path="shoelist" element={<ShoeList />} />
             <Route path="updateshoe/:id" element={<UpdateShoe />} />
+            <Route path="adduser" element={<AddUser />} />
+            <Route path="userlist" element={<UserList />} />
+            <Route path="updateuser/:id" element={<UpdateUser />} />
+            <Route path="stock" element={<Stock />} />
+            <Route
+              path="/updateProductlist/:id"
+              element={<UpdateProductList />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
