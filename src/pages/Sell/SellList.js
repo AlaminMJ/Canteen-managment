@@ -1,8 +1,37 @@
-import React, { useState } from "react";
-import { Button, Form, Table } from "react-bootstrap";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import MaterialTable from "material-table";
+import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 import DeleteModal from "../../components/Modal/DeleteModal";
 const SellList = () => {
   const [modalShow, setModalShow] = useState(false);
+  const [sells, setSells] = useState([]);
+  const loadDate = async () => {
+    try {
+      const result = await axios("http://localhost:5000/api/bills");
+      setSells(result.data);
+      console.log(sells);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    loadDate();
+  }, []);
+  const deleteBill = async (id) => {
+    try {
+      const result = await axios.delete(
+        `http://localhost:5000/api/bills/${id}`
+      );
+      alert("successfull");
+      loadDate();
+    } catch (error) {
+      alert(error.message);
+      console.dir(error);
+    }
+  };
+
   return (
     <div>
       <div className="container">
@@ -14,114 +43,60 @@ const SellList = () => {
             controlId="formGridPassword"
           >
             <Form.Label>Date</Form.Label>
-            <Form.Control type="date" defaultValue={new Date().toJSON().slice(0,10)
- } />
+            <Form.Control
+              type="date"
+              defaultValue={new Date().toJSON().slice(0, 10)}
+            />
           </Form.Group>
         </div>
         <div>
-          <Table striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Date</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Unit</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>12-jan-2021</td>
-                <td>Rice</td>
-                <td>56</td>
-                <td>10000</td>
-                <td>Kg</td>
-                <td>
-                  <Button size="sm">Edit</Button>
-                  <Button variant="success" size="sm" className="ms-2">
-                    Print
-                  </Button>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="ms-2"
-                    onClick={() => setModalShow(true)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>12-jan-2021</td>
-                <td>Rice</td>
-                <td>56</td>
-                <td>10000</td>
-                <td>Kg</td>
-                <td>
-                  <Button size="sm">Edit</Button>
-                  <Button variant="success" size="sm" className="ms-2">
-                    Print
-                  </Button>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="ms-2"
-                    onClick={() => setModalShow(true)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>12-jan-2021</td>
-                <td>Rice</td>
-                <td>56</td>
-                <td>10000</td>
-                <td>Kg</td>
-                <td>
-                  <Button size="sm">Edit</Button>
-                  <Button variant="success" size="sm" className="ms-2">
-                    Print
-                  </Button>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="ms-2"
-                    onClick={() => setModalShow(true)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>12-jan-2021</td>
-                <td>Rice</td>
-                <td>56</td>
-                <td>10000</td>
-                <td>Kg</td>
-                <td>
-                  <Button size="sm">Edit</Button>
-                  <Button variant="success" size="sm" className="ms-2">
-                    Print
-                  </Button>
-                  <Button
-                    variant="danger"
-                    size="sm"
-                    className="ms-2"
-                    onClick={() => setModalShow(true)}
-                  >
-                    Delete
-                  </Button>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
+          <MaterialTable
+            className="mt-2"
+            columns={[
+              { title: "Date", field: "date" },
+              { title: "Product Name", field: "name" },
+              { title: "Price", field: "price" },
+              { title: "unit", field: "unite" },
+              { title: "quantity", field: "quantity" },
+
+              {
+                title: "Action",
+                render: (rowData) => (
+                  <>
+                    <Link to={`/bill/${rowData._id}`}>
+                      <button className="btn btn-sm btn-primary">View</button>
+                    </Link>
+
+                    <Link to={`/updateshoe/${rowData._id}`}>
+                      <button className="btn btn-sm btn-success ms-2">
+                        Edit
+                      </button>
+                    </Link>
+
+                    <button
+                      className="btn btn-sm btn-danger ms-2"
+                      onClick={() => deleteBill(rowData._id)}
+                    >
+                      Delete
+                    </button>
+                  </>
+                )
+              }
+            ]}
+            data={[
+              {
+                date: "10-02-22",
+                name: "alamin",
+                quantity: 20,
+                unit: "kg",
+                price: 200
+              }
+            ]}
+            title="Sell List"
+            options={{
+              exportButton: true
+            }}
+          />
         </div>
       </div>
     </div>
