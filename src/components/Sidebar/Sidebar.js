@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./sidebar.css";
 import { Link } from "react-router-dom";
 import { BiHomeAlt, BiFoodMenu } from "react-icons/bi";
-import { BsFolder } from "react-icons/bs";
+// import { BsFolder } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import {
   MdOutlineKeyboardArrowDown,
@@ -155,10 +155,10 @@ const Sidebar = () => {
                   showMenu ? "collapse__menu active" : "collapse__menu"
                 }
               >
-                <Link to="/bill" className="collapse__sublink">
+                <Link to="/addmenu" className="collapse__sublink">
                   Add Menu
                 </Link>
-                <Link to="/billlist" className="collapse__sublink">
+                <Link to="/break" className="collapse__sublink">
                   Breakfast Menu
                 </Link>
                 <Link to="/billlist" className="collapse__sublink">
