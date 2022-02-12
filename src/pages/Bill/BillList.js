@@ -37,19 +37,14 @@ const BillList = () => {
     <div className="container">
       <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
       <h1 className="display-4 text-primary text-center">Bill List</h1>
-      <div>
-        <Form.Group className="col-3 ms-auto mb-3" controlId="formGridPassword">
-          <Form.Label>Date</Form.Label>
-          <Form.Control type="date" />
-        </Form.Group>
-      </div>
+
       <div>
         <MaterialTable
           className="mt-2"
           columns={[
-            { title: "ID", field: "id" },
-            { title: "Name", field: "name" },
             { title: "Date", field: "date" },
+            { title: "Name", field: "name" },
+            { title: "Total", field: "date" },
 
             {
               title: "Action",
