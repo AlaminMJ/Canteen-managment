@@ -19,16 +19,15 @@ const SellList = () => {
   useEffect(() => {
     loadDate();
   }, []);
-  const deleteBill = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/bills/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+  const deleteSell = async (id) => {
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/sells/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 
@@ -75,7 +74,7 @@ const SellList = () => {
 
                     <button
                       className="btn btn-sm btn-danger ms-2"
-                      onClick={() => deleteBill(rowData._id)}
+                      onClick={() => deleteSell(rowData._id)}
                     >
                       Delete
                     </button>

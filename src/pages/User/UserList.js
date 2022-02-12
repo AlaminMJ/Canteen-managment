@@ -21,15 +21,14 @@ const UserList = () => {
     loadDate();
   }, []);
   const deleteUser = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/users/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+    if (window.confirm("Confirm Delete")) {
+      try {
+        const result = await axios.delete(`/users/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
   return (

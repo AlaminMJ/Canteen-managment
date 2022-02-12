@@ -21,16 +21,15 @@ const PurchaseList = () => {
   useEffect(() => {
     loadDate();
   }, []);
-  const deleteShoe = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/shoes/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+  const deletePurchase = async (id) => {
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/purchases/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
   return (
@@ -61,7 +60,7 @@ const PurchaseList = () => {
 
                 <button
                   className="btn btn-sm btn-danger ms-2"
-                  onClick={() => deleteShoe(rowData._id)}
+                  onClick={() => deletePurchase(rowData._id)}
                 >
                   Delete
                 </button>

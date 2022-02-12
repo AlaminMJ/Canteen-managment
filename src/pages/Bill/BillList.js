@@ -21,15 +21,14 @@ const BillList = () => {
     loadDate();
   }, []);
   const deleteBill = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/bills/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/bills/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
 

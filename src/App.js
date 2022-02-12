@@ -20,6 +20,7 @@ import AddUser from "./pages/User/AddUser";
 import UserList from "./pages/User/UserList";
 import UpdateUser from "./pages/User/UpdateUser";
 import Stock from "./pages/Stock/Stock";
+import UpdateProductList from "./pages/ProductList/UpdateProductList";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
             <Route path="userlist" element={<UserList />} />
             <Route path="updateuser/:id" element={<UpdateUser />} />
             <Route path="stock" element={<Stock />} />
+            <Route
+              path="/updateProductlist/:id"
+              element={<UpdateProductList />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -21,15 +21,14 @@ const ShoeList = () => {
     loadDate();
   }, []);
   const deleteShoe = async (id) => {
-    try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/shoes/${id}`
-      );
-      alert("successfull");
-      loadDate();
-    } catch (error) {
-      alert(error.message);
-      console.dir(error);
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/shoes/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
     }
   };
   return (
