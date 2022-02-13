@@ -19,16 +19,13 @@ const SellList = () => {
   useEffect(() => {
     loadDate();
   }, []);
-  const deleteBill = async (id) => {
+  const deleteSell = async (id) => {
     try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/bills/${id}`
-      );
+      await axios.delete(`/sells/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
       alert(error.message);
-      console.dir(error);
     }
   };
 
@@ -75,13 +72,13 @@ const SellList = () => {
 
                     <button
                       className="btn btn-sm btn-danger ms-2"
-                      onClick={() => deleteBill(rowData._id)}
+                      onClick={() => deleteSell(rowData._id)}
                     >
                       Delete
                     </button>
                   </>
-                )
-              }
+                ),
+              },
             ]}
             data={[
               {
@@ -89,12 +86,12 @@ const SellList = () => {
                 name: "alamin",
                 quantity: 20,
                 unit: "kg",
-                price: 200
-              }
+                price: 200,
+              },
             ]}
             title="Sell List"
             options={{
-              exportButton: true
+              exportButton: true,
             }}
           />
         </div>

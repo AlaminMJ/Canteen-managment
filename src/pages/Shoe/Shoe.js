@@ -13,7 +13,7 @@ const Shoe = () => {
   const onSubmit = (data) => {
     console.log();
     axios
-      .post("http://localhost:5000/api/shoes", data)
+      .post("https://acmecanteen.herokuapp.com/api/shoes", data)
       .then((res) => {
         alert("Sucessfull Added");
       })

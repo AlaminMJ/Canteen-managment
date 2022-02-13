@@ -20,6 +20,7 @@ import AddUser from "./pages/User/AddUser";
 import UserList from "./pages/User/UserList";
 import UpdateUser from "./pages/User/UpdateUser";
 import Stock from "./pages/Stock/Stock";
+import UpdateProductList from "./pages/ProductList/UpdateProductList";
 
 function App() {
   return (
@@ -41,11 +42,12 @@ function App() {
             <Route path="billlist" element={<BillList />} />
             <Route path="shoe" element={<Shoe />} />
             <Route path="shoelist" element={<ShoeList />} />
-            <Route path="updateshoe/:id" element={<UpdateShoe />} />
+            <Route path="updateshoe" element={<UpdateShoe />} />
             <Route path="adduser" element={<AddUser />} />
             <Route path="userlist" element={<UserList />} />
-            <Route path="updateuser/:id" element={<UpdateUser />} />
+            <Route path="updateuser" element={<UpdateUser />} />
             <Route path="stock" element={<Stock />} />
+            <Route path="updateProductlist" element={<UpdateProductList />} />
           </Route>
         </Routes>
       </BrowserRouter>

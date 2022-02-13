@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../config/axios";
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import MaterialTable from "material-table";
@@ -10,7 +10,7 @@ const ShoeList = () => {
   const [shoes, setShoes] = useState([]);
   const loadDate = async () => {
     try {
-      const result = await axios("http://localhost:5000/api/shoes");
+      const result = await axios("/shoes");
       setShoes(result.data);
       console.log(shoes);
     } catch (error) {
@@ -22,14 +22,11 @@ const ShoeList = () => {
   }, []);
   const deleteShoe = async (id) => {
     try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/shoes/${id}`
-      );
+      await axios.delete(`/shoes/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
       alert(error.message);
-      console.dir(error);
     }
   };
   return (
@@ -66,13 +63,13 @@ const ShoeList = () => {
                     Delete
                   </button>
                 </>
-              )
-            }
+              ),
+            },
           ]}
           data={shoes}
           title="Shoe recive"
           options={{
-            exportButton: true
+            exportButton: true,
           }}
         />
       </div>

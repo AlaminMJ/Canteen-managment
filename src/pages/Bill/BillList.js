@@ -22,14 +22,11 @@ const BillList = () => {
   }, []);
   const deleteBill = async (id) => {
     try {
-      const result = await axios.delete(
-        `http://localhost:5000/api/bills/${id}`
-      );
+      await axios.delete(`/bills/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
       alert(error.message);
-      console.dir(error);
     }
   };
 
@@ -67,13 +64,13 @@ const BillList = () => {
                     Delete
                   </button>
                 </>
-              )
-            }
+              ),
+            },
           ]}
           data={[{ id: 100, name: "alamin", date: "10-08-22" }]}
           title="Bill List"
           options={{
-            exportButton: true
+            exportButton: true,
           }}
         />
       </div>
