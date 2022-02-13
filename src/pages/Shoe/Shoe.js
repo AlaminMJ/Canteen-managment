@@ -55,7 +55,7 @@ const Shoe = () => {
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Id</Form.Label>
             <Form.Control
-              type="number"
+              type="text"
               placeholder="id"
               {...register("id", { required: true })}
             />

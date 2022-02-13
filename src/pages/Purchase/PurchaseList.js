@@ -9,23 +9,30 @@ const PurchaseList = () => {
   const [modalShow, setModalShow] = useState(false);
 
   const [shoes, setShoes] = useState([]);
-  const loadDate = async () => {
-    try {
-      const result = await axios("/shoes");
-      setShoes(result.data);
-      console.log(shoes);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const loadDate = async () => {
+  //   try {
+  //     const result = await axios.get(
+  //       "https://acmecanteen.herokuapp.com/api/shoes"
+  //     );
+  //     setShoes(result.data);
+  //     console.log(shoes);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
   useEffect(() => {
-    loadDate();
+    axios
+      .get("https://acmecanteen.herokuapp.com/api/shoes")
+      .then((res) => {
+        setShoes(res.data);
+      })
+      .catch((err) => alert(err.message));
   }, []);
   const deletePurchase = async (id) => {
     try {
       await axios.delete(`/purchases/${id}`);
       alert("successfull");
-      loadDate();
+      // loadDate();
     } catch (error) {
       alert(error.message);
     }

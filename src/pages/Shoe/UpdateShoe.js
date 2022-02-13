@@ -11,19 +11,23 @@ const UpdateShoe = () => {
   const [shoe, setShoe] = useState({});
   const { id } = useParams;
   const loadData = async () => {
-    const result = await axios(`http://localhost:5000/api/shoes/${id}`);
+    const result = await axios(
+      `https://acmecanteen.herokuapp.com/api/shoes/${id}`
+    );
     setShoe(result.data);
+    console.log(result.data);
   };
   useEffect(() => {
     loadData();
   }, []);
-  const curr = new Date();
-  curr.setDate(curr.getDate());
-  const today = curr.toISOString().substr(0, 10);
+
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    const result = await axios.put("http://localhost:5000/api/shoes", data);
+    const result = await axios.put(
+      "https://acmecanteen.herokuapp.com/api/shoes",
+      data
+    );
     console.log(result.data);
   };
 
@@ -43,7 +47,6 @@ const UpdateShoe = () => {
             <Form.Label>Date</Form.Label>
             <Form.Control
               type="date"
-              defaultValue={today}
               {...register("date", { required: true })}
             />
           </Form.Group>

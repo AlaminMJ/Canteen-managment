@@ -42,7 +42,7 @@ function App() {
             <Route path="billlist" element={<BillList />} />
             <Route path="shoe" element={<Shoe />} />
             <Route path="shoelist" element={<ShoeList />} />
-            <Route path="updateshoe" element={<UpdateShoe />} />
+            <Route path="updateshoe/:id" element={<UpdateShoe />} />
             <Route path="adduser" element={<AddUser />} />
             <Route path="userlist" element={<UserList />} />
             <Route path="updateuser" element={<UpdateUser />} />

@@ -11,7 +11,7 @@ const UpdateProductList = () => {
   const onSubmit = (data) => {
     console.log(data);
     axios
-      .put("/productlists", data)
+      .put("https://acmecanteen.herokuapp.com/api/", data)
       .then((res) => {
         alert("Sucessfull Added");
       })

@@ -1,4 +1,4 @@
-import axios from "../../config/axios";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import MaterialTable from "material-table";
@@ -10,7 +10,9 @@ const ShoeList = () => {
   const [shoes, setShoes] = useState([]);
   const loadDate = async () => {
     try {
-      const result = await axios("/shoes");
+      const result = await axios(
+        "https://acmecanteen.herokuapp.com/api//shoes"
+      );
       setShoes(result.data);
       console.log(shoes);
     } catch (error) {
@@ -22,7 +24,7 @@ const ShoeList = () => {
   }, []);
   const deleteShoe = async (id) => {
     try {
-      await axios.delete(`/shoes/${id}`);
+      await axios.delete(`https://acmecanteen.herokuapp.com/api/shoes/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
