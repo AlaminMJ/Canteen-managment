@@ -21,11 +21,7 @@ const UserList = () => {
     loadDate();
   }, []);
   const deleteUser = async (id) => {
-<<<<<<< HEAD
-   
-=======
     if (window.confirm("Confirm Delete")) {
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
       try {
         const result = await axios.delete(`/users/${id}`);
         alert("successfull");
@@ -33,11 +29,7 @@ const UserList = () => {
       } catch (error) {
         alert(error.message);
       }
-<<<<<<< HEAD
-   
-=======
     }
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
   };
   return (
     <div>
@@ -72,18 +64,18 @@ const UserList = () => {
                     Delete
                   </button>
                 </>
-              )
-            }
+              ),
+            },
           ]}
           data={[
             { userName: "Alamin", roll: "admin" },
             { userName: "Alamin", roll: "canteen" },
             { userName: "Alamin", roll: "store" },
-            { userName: "Alamin", roll: "admin" }
+            { userName: "Alamin", roll: "admin" },
           ]}
           title="Users"
           options={{
-            exportButton: true
+            exportButton: true,
           }}
         />
       </div>

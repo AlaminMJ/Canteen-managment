@@ -23,71 +23,70 @@ const ShoeList = () => {
     loadDate();
   }, []);
   const deleteShoe = async (id) => {
-<<<<<<< HEAD
     try {
       await axios.delete(`https://acmecanteen.herokuapp.com/api/shoes/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
       alert(error.message);
-=======
-    if (window.confirm("Confirm Delete")) {
-      try {
-        await axios.delete(`/shoes/${id}`);
-        alert("successfull");
-        loadDate();
-      } catch (error) {
-        alert(error.message);
+
+      if (window.confirm("Confirm Delete")) {
+        try {
+          await axios.delete(`/shoes/${id}`);
+          alert("successfull");
+          loadDate();
+        } catch (error) {
+          alert(error.message);
+        }
       }
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
     }
-  };
-  return (
-    <div>
-      <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
-      <div className="m-4">
-        <h1 className="text-center text-primary display-5">Shoe List</h1>
-        <div className="d-flex justify-content-between">
-          <div className="col-3 mb-2"></div>
-          <Link to="/shoe">
-            <Button className="mb-2">Add new</Button>
-          </Link>
+    return (
+      <div>
+        <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
+        <div className="m-4">
+          <h1 className="text-center text-primary display-5">Shoe List</h1>
+          <div className="d-flex justify-content-between">
+            <div className="col-3 mb-2"></div>
+            <Link to="/shoe">
+              <Button className="mb-2">Add new</Button>
+            </Link>
+          </div>
+
+          <MaterialTable
+            className="mt-2"
+            columns={[
+              { title: "ID", field: "id" },
+              { title: "Name", field: "name" },
+              { title: "Date", field: "date" },
+
+              {
+                title: "action",
+                render: (rowData) => (
+                  <>
+                    <Link to={`/updateshoe/${rowData._id}`}>
+                      <button className="btn btn-sm btn-primary">Edit</button>
+                    </Link>
+
+                    <button
+                      className="btn btn-sm btn-danger ms-2"
+                      onClick={() => deleteShoe(rowData._id)}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ),
+              },
+            ]}
+            data={shoes}
+            title="Shoe recive"
+            options={{
+              exportButton: true,
+            }}
+          />
         </div>
-
-        <MaterialTable
-          className="mt-2"
-          columns={[
-            { title: "ID", field: "id" },
-            { title: "Name", field: "name" },
-            { title: "Date", field: "date" },
-
-            {
-              title: "action",
-              render: (rowData) => (
-                <>
-                  <Link to={`/updateshoe/${rowData._id}`}>
-                    <button className="btn btn-sm btn-primary">Edit</button>
-                  </Link>
-
-                  <button
-                    className="btn btn-sm btn-danger ms-2"
-                    onClick={() => deleteShoe(rowData._id)}
-                  >
-                    Delete
-                  </button>
-                </>
-              ),
-            },
-          ]}
-          data={shoes}
-          title="Shoe recive"
-          options={{
-            exportButton: true,
-          }}
-        />
       </div>
-    </div>
-  );
+    );
+  };
 };
 
 export default ShoeList;

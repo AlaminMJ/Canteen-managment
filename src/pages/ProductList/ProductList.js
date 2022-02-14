@@ -19,11 +19,11 @@ const ProductList = () => {
   }, []);
 
   const deleteProducts = async (id) => {
-<<<<<<< HEAD
+
     
-=======
+
     if (window.confirm("Confirm Delete")) {
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
+
       try {
         await axios.delete(`/productlists/${id}`);
         alert("successfull");
@@ -31,11 +31,11 @@ const ProductList = () => {
       } catch (error) {
         alert(error.message);
       }
-<<<<<<< HEAD
+
     
-=======
+
     }
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
+
   };
   return (
     <div className="container px-4">

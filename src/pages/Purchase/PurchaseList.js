@@ -29,69 +29,68 @@ const PurchaseList = () => {
       .catch((err) => alert(err.message));
   }, []);
   const deletePurchase = async (id) => {
-<<<<<<< HEAD
     try {
       await axios.delete(`/purchases/${id}`);
       alert("successfull");
       // loadDate();
     } catch (error) {
       alert(error.message);
-=======
-    if (window.confirm("Confirm Delete")) {
-      try {
-        await axios.delete(`/purchases/${id}`);
-        alert("successfull");
-        loadDate();
-      } catch (error) {
-        alert(error.message);
+
+      if (window.confirm("Confirm Delete")) {
+        try {
+          await axios.delete(`/purchases/${id}`);
+          alert("successfull");
+          loadDate();
+        } catch (error) {
+          alert(error.message);
+        }
       }
->>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
     }
-  };
-  return (
-    <div className="container">
-      <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
-      <h1 className="display-4 text-primary text-center">Purchase List</h1>
-      <div>
-        <Link to="/purchase" className="mb-4">
-          <Button className="d-flex align-items-center ms-auto">
-            Purchase
-          </Button>
-        </Link>
+    return (
+      <div className="container">
+        <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
+        <h1 className="display-4 text-primary text-center">Purchase List</h1>
+        <div>
+          <Link to="/purchase" className="mb-4">
+            <Button className="d-flex align-items-center ms-auto">
+              Purchase
+            </Button>
+          </Link>
+        </div>
+        <MaterialTable
+          className="mt-2"
+          columns={[
+            { title: "ID", field: "id" },
+            { title: "Name", field: "name" },
+            { title: "Date", field: "date" },
+
+            {
+              title: "action",
+              render: (rowData) => (
+                <>
+                  <Link to={`/updateshoe/${rowData._id}`}>
+                    <button className="btn btn-sm btn-primary">Edit</button>
+                  </Link>
+
+                  <button
+                    className="btn btn-sm btn-danger ms-2"
+                    onClick={() => deletePurchase(rowData._id)}
+                  >
+                    Delete
+                  </button>
+                </>
+              ),
+            },
+          ]}
+          data={[]}
+          title="Purchase List"
+          options={{
+            exportButton: true,
+          }}
+        />
       </div>
-      <MaterialTable
-        className="mt-2"
-        columns={[
-          { title: "ID", field: "id" },
-          { title: "Name", field: "name" },
-          { title: "Date", field: "date" },
-
-          {
-            title: "action",
-            render: (rowData) => (
-              <>
-                <Link to={`/updateshoe/${rowData._id}`}>
-                  <button className="btn btn-sm btn-primary">Edit</button>
-                </Link>
-
-                <button
-                  className="btn btn-sm btn-danger ms-2"
-                  onClick={() => deletePurchase(rowData._id)}
-                >
-                  Delete
-                </button>
-              </>
-            ),
-          },
-        ]}
-        data={[]}
-        title="Purchase List"
-        options={{
-          exportButton: true,
-        }}
-      />
-    </div>
-  );
+    );
+  };
 };
 
 export default PurchaseList;
