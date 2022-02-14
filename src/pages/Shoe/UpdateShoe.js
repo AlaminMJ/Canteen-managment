@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { IoMdPaperPlane } from "react-icons/io";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const UpdateShoe = () => {
   const [shoe, setShoe] = useState({});

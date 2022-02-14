@@ -23,12 +23,23 @@ const ShoeList = () => {
     loadDate();
   }, []);
   const deleteShoe = async (id) => {
+<<<<<<< HEAD
     try {
       await axios.delete(`https://acmecanteen.herokuapp.com/api/shoes/${id}`);
       alert("successfull");
       loadDate();
     } catch (error) {
       alert(error.message);
+=======
+    if (window.confirm("Confirm Delete")) {
+      try {
+        await axios.delete(`/shoes/${id}`);
+        alert("successfull");
+        loadDate();
+      } catch (error) {
+        alert(error.message);
+      }
+>>>>>>> 755884b3f40b462bf1e381f442f4f657b28add8a
     }
   };
   return (

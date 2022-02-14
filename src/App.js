@@ -47,7 +47,13 @@ function App() {
             <Route path="userlist" element={<UserList />} />
             <Route path="updateuser" element={<UpdateUser />} />
             <Route path="stock" element={<Stock />} />
+
             <Route path="updateProductlist" element={<UpdateProductList />} />
+
+            <Route
+              path="updateProductlist/:id"
+              element={<UpdateProductList />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

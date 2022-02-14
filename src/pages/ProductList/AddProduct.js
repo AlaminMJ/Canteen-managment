@@ -1,6 +1,10 @@
 import React from "react";
+<<<<<<< HEAD
+import axios from "../../"
+=======
 import axios from "axios";
 import { Link } from "react-router-dom";
+>>>>>>> 720855100308bb9da291cd7cd451a55015068008
 import { useForm } from "react-hook-form";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { IoMdPaperPlane } from "react-icons/io";
